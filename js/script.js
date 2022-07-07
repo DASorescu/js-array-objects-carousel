@@ -36,14 +36,30 @@ const imagesArray = [
 
 
 
-// definire la variabile per contenere le immagini 
-let slider ="";
+// slider thumbs
+let sliderThumbs ="";
+
+// ciclo for per riempire il contenitore delle immagini
+for(const image of imagesArray){
+    sliderThumbs += (`<div class="image-wrapper"><img src="${image.url}" alt="${image.title}"></div>`);
+}
+    
+
+
+// slider Big images
+let sliderBig ="";
 
 // ciclo for per riempire il contenitore delle immagini
 for(const image of imagesArray){
     
-
-    slider += (`<div class="image-wrapper"><img src="${image.url}" alt="${image.title}"></div>`);
+    sliderBig += (`
+    <div class="image-wrapper">
+        <div class="image-description">
+            <h2>${image.title}</h2>
+            <p>${image.description}</p>
+        </div>
+        <img src="${image.url}" alt="${image.title}">
+    </div>`);
 }
 
 
@@ -62,17 +78,19 @@ const thumbnails = document.getElementById("thumbnail");
 
 // inserisco lo stringone all'interno della gallery
 
-arrayContainer.innerHTML = slider;
-thumbnails.innerHTML = slider;
+arrayContainer.innerHTML = sliderBig;
+thumbnails.innerHTML = sliderThumbs;
 
 // seleziono tutte le immagini create nel dom attraverso js
 
-const images = document.querySelectorAll("#img-container div");
+const images = document.querySelectorAll("#img-container .image-wrapper");
 const thumbs = document.querySelectorAll("#thumbnail div");
+
 
 // //Imposto la classe active ad una immagine a mia scelta 
 images[currentActiveIndex].classList.add("active");
 thumbs[currentActiveIndex].classList.add("active");
+
 
 // logica slider forward
 
