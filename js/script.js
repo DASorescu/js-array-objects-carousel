@@ -40,8 +40,10 @@ const imagesArray = [
 let slider ="";
 
 // ciclo for per riempire il contenitore delle immagini
-for(let i = 0; i < sources.length ; i++){
-    slider += (`<img src="${sources[i]}" alt="${sources[i]}">`);
+for(const image of imagesArray){
+    
+
+    slider += (`<div class="image-wrapper"><img src="${image.url}" alt="${image.title}"></div>`);
 }
 
 
@@ -56,7 +58,7 @@ const nextButton = document.getElementById("right-slider");
 // recupero dal dom il contenitore della gallery 
 
 const arrayContainer = document.getElementById("img-container");
-const thumbnails = document.getElementById("thumbnail")
+const thumbnails = document.getElementById("thumbnail");
 
 // inserisco lo stringone all'interno della gallery
 
@@ -65,8 +67,8 @@ thumbnails.innerHTML = slider;
 
 // seleziono tutte le immagini create nel dom attraverso js
 
-const images = document.querySelectorAll("#img-container img");
-const thumbs = document.querySelectorAll("#thumbnail img");
+const images = document.querySelectorAll("#img-container div");
+const thumbs = document.querySelectorAll("#thumbnail div");
 
 // //Imposto la classe active ad una immagine a mia scelta 
 images[currentActiveIndex].classList.add("active");
