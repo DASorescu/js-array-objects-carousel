@@ -3,6 +3,8 @@
     height: 100%;
     width: 100%;
     display: none;
+    font-family: 'Edu VIC WA NT Beginner';
+    font-family: 'Montserrat', sans-serif;
 }
 
 #img-container > .image-wrapper{
@@ -25,10 +27,12 @@
     
 }
 .image-description > h2{
+    font-weight: 600;
     padding-right: 1rem;
     text-align: end;
 }
 .image-description > p{
+    font-size: 1.5rem;
     padding-right: 1rem;
     text-align: end;
 }
@@ -105,4 +109,13 @@
     filter: grayscale(0);
     box-shadow: 0 0 5px 0 darkblue;
 }
-    
+
+#thumbnail > .image-wrapper:hover{
+    cursor: pointer;
+    box-shadow: 0 0 5px 0 goldenrod;
+    transform: scale(1.02);
+    filter: grayscale(0);
+}
+
+
+   

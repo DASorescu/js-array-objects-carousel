@@ -39,24 +39,22 @@ const imagesArray = [
 // slider thumbs
 let sliderThumbs ="";
 
-// ciclo for per riempire il contenitore delle immagini
-for(const image of imagesArray){
-    sliderThumbs += (`<div class="image-wrapper"><img src="${image.url}" alt="${image.title}"></div>`);
-}
-    
-
-
 // slider Big images
 let sliderBig ="";
 
 // ciclo for per riempire il contenitore delle immagini
 for(const image of imagesArray){
     
+    const img = (`<div class="image-wrapper"><img src="${image.url}" alt="${image.title}"></div>`);
+    
+    // //THUMBNAILS
+    sliderThumbs += img ;
+    //// GALLERIA
     sliderBig += (`
     <div class="image-wrapper">
         <div class="image-description">
             <h2>${image.title}</h2>
-            <p>${image.description}</p>
+            <p><strong>${image.description}</strong></p>
         </div>
         <img src="${image.url}" alt="${image.title}">
     </div>`);
@@ -71,12 +69,12 @@ let currentActiveIndex = 0;
 const prevButton = document.getElementById("left-slider");
 const nextButton = document.getElementById("right-slider");
 
-// recupero dal dom il contenitore della gallery 
+// recupero dal dom il contenitore della gallery e degli thumbnails           
 
 const arrayContainer = document.getElementById("img-container");
 const thumbnails = document.getElementById("thumbnail");
 
-// inserisco lo stringone all'interno della gallery
+// inserisco lo stringone all'interno della gallery e neggli thumbnails 
 
 arrayContainer.innerHTML = sliderBig;
 thumbnails.innerHTML = sliderThumbs;
@@ -126,6 +124,21 @@ prevButton.addEventListener("click", function(){
 });
 
 
+thumbnails.forEach ((thumb , i )=> {
+    thumb.addEventListener("click", function(){
+        
+        images[currentActiveIndex].classList.remove("active");
+        thumbs[currentActiveIndex].classList.remove("active");
+        
+        
+        currentActiveIndex = i ;
+        
+        images[currentActiveIndex].classList.add("active");
+        thumbs[currentActiveIndex].classList.add("active");
+    });    
+
+
+});
 
 
 
